@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.App {
+	scroll-behavior: smooth;
+}
+html {
+	background-color: #112244;
+	font-family: "Nunito", sans-serif !important;
+}
+.no-select {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+.shadow {
+	box-shadow: 0 10px 0 #aa460a;
+}
+
+.card {
+	perspective: 150rem;
+	position: relative;
+	height: 34rem;
+	max-width: 400px;
+	margin: 2rem;
+	box-shadow: none;
+	background: none;
+}
+
+.card-side {
+	border-radius: 15px;
+	transition: all 0.8s ease;
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: white;
+}
+
+.card-side.back {
+	transform: rotateY(-180deg);
+	background-color: #4158d0;
+	background-image: linear-gradient(
+		43deg,
+		#4158d0 0%,
+		#c850c0 46%,
+		#ffcc70 100%
+	);
+}
+
+.card-side.front {
+	background-color: #0093e9;
+	background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+/* .card:hover .card-side.front {
+	transform: rotateY(180deg);
+} */
+.rotate-hide-front {
+	transform: rotateY(180deg);
+}
+/* .card:hover .card-side.back {
+	transform: rotateY(0deg);
+} */
+
+.card-side.back.rotate {
+	transform: rotateY(0deg);
+}

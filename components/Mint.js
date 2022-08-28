@@ -317,6 +317,8 @@ export function Mint() {
 										<li>
 											<a
 												// href={`https://testnets.opensea.io/collection/${config.addressOrName}`}
+												// href={`https://testnets.opensea.io/collection/${config.addressOrName}`}
+												// href={`https://testnets.opensea.io/collection/${config.addressOrName}`}
 												href="https://testnets.opensea.io/account?search[resultModel]=ASSETS&search[sortBy]=CREATED_DATE&search[sortAscending]=false"
 												target="_blank"
 												rel="noreferrer"

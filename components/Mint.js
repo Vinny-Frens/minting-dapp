@@ -18,6 +18,8 @@ export function Mint() {
 	const [merkel, setMerkel] = useState();
 	const [Quantity, setQuantity] = useState(1);
 	const [isdisconnected, setisdisconnected] = useState(false);
+	const [errorMessage, seterrorMessage] = useState(" ");
+	const [isErorr, setError] = useState(false);
 	const { data: account } = useAccount();
 
 	const disconnect = useDisconnect({
@@ -29,21 +31,10 @@ export function Mint() {
 
 	useEffect(() => {
 		setAccountReady(Boolean(account));
-		console.log(isdisconnected);
+		console.log(account);
 		if (isdisconnected) {
 			console.log("disconnected");
 		}
-		// if (accountReady) {
-		// 	console.log(account, "account");
-		// 	const sentAddress = keccak256(account.address);
-		// 	const leafNodes = whiteListAddresses.map((addr) => keccak256(addr));
-		// 	const merkleTree = new MerkleTree(leafNodes, keccak256, {
-		// 		sortPairs: true,
-		// 	});
-		// 	const rootHash = merkleTree.getHexRoot();
-		// 	const merkleProof = merkleTree.getHexProof(sentAddress);
-		// 	console.log(rootHash, merkleProof);
-		// }
 	}, [account, accountReady]);
 
 	const config = {
@@ -51,13 +42,19 @@ export function Mint() {
 		contractInterface: contractInterface,
 	};
 
+	console.log(address);
 	const { data } = useContractRead(config, "cost");
+	const { data: balance } = useContractRead(config, "balanceOf", {
+		args: ["0xb40185164121A79A638A877b22042af58825cE0b"],
+	});
+	console.log(Number(balance));
 
 	const {
 		data: mintData,
 		write,
 		isSuccess,
 		isLoading,
+		isError,
 	} = useContractWrite(config, "whitelistMint", {
 		args: [Quantity, merkel],
 		overrides: {
@@ -65,6 +62,10 @@ export function Mint() {
 		},
 		onSuccess: () => {
 			console.log("minting done");
+		},
+		onError: (error) => {
+			seterrorMessage(error.reason);
+			setError(true);
 		},
 	});
 
@@ -81,6 +82,11 @@ export function Mint() {
 	// 	onSuccess: () => {
 	// 		console.log("minting done");
 	// 	},
+	// onError: (error) => {
+	// 	seterrorMessage(error.reason);
+	// 	setError(true);
+	// 	console.log(error.reason);
+	// },
 	// });
 
 	const { isLoading: txLoading, isSuccess: txSuccess } = useWaitForTransaction({
@@ -116,6 +122,48 @@ export function Mint() {
 	return (
 		<>
 			<div id="mint" className="bg-[#124] py-40">
+				{isErorr && errorMessage ? (
+					<>
+						<div className="flex w-9/12  md:w-4/12 mx-auto p-4 mb-4 bg-blue-100 rounded-lg dark:bg-blue-200 cursor-pointer">
+							<svg
+								aria-hidden="true"
+								className="flex-shrink-0 w-5 h-5 text-blue-700 dark:text-blue-800"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fillRule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+									clipRule="evenodd"
+								></path>
+							</svg>
+							<span className="sr-only">Info</span>
+							<div className="ml-3 text-sm font-medium ">{errorMessage}</div>
+							<button
+								type="button"
+								className="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300"
+								onClick={() => setError(false)}
+							>
+								<span className="sr-only">Close</span>
+								<svg
+									aria-hidden="true"
+									className="w-5 h-5"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										fillRule="evenodd"
+										d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+										clipRule="evenodd"
+									></path>
+								</svg>
+							</button>
+						</div>
+					</>
+				) : null}
+
 				<div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2">
 					<div className="my-auto mx-4 bg-white rounded-xl text-black border-[5px] border-[#fcc] p-7 ">
 						<div className="text-3xl font-black text-orange-400 uppercase mb-6">
@@ -156,7 +204,7 @@ export function Mint() {
 									type="button"
 									className="bg-orange-400 text-white rounded-lg px-4 py-4 font-bold text-3xl shadow hover:bg-orange-500 transition-all"
 									onClick={() => {
-										if (Quantity < 20) {
+										if (Quantity < 42) {
 											setQuantity(Quantity + 1);
 										}
 									}}
@@ -177,7 +225,13 @@ export function Mint() {
 									{txLoading ? (
 										<>
 											<button className="bg-orange-400 text-white rounded-lg px-8 py-4 font-bold text-3xl shadow hover:bg-orange-500 transition-all">
-												Tx Pending
+												<a
+													href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}
+													target="_blank"
+													rel="noreferrer"
+												>
+													Tx Pending
+												</a>
 											</button>
 										</>
 									) : (
@@ -194,24 +248,30 @@ export function Mint() {
 								</>
 							)}
 						</div>
+						<div className="mt-4">
+							<h1>Costs {(0.0799 * Quantity).toFixed(4)} ETH + gas</h1>
+						</div>
 					</div>
-					<div className="pt-10">
+					<div className="">
 						<div className="card">
 							<div
 								className={`${
-									txSuccess ? "rotate-hide-front" : " "
+									!txSuccess ? "rotate-hide-front" : " "
 								} card-side front`}
 							>
-								<img className="relative rounded-lg" src="/VR.jpg" alt="" />
+								<img className="relative rounded-lg" src="/vaf.gif" alt="" />
 							</div>
-							<div className={`${txSuccess ? "rotate" : " "} + card-side back`}>
+							<div
+								className={`${!txSuccess ? "rotate" : " "} + card-side back`}
+							>
 								<div className=" p-4 w-full max-w-sm bg-white rounded-lg border-[5px] shadow-md sm:p-6  dark:border-[#fcc] rotate-360 transition-all">
 									<h5 className="text-3xl font-black text-orange-400 uppercase mb-6">
 										Mint Done
 									</h5>
 									<p className="text-sm font-normal text-black">
-										Your NFT will show up in your wallet in the next few
-										minutes. View your NFT on:
+										You have successfully purchased <strong>X</strong> Vinny &
+										Frens NFTs. View your NFT on one of the following
+										marketplaces
 									</p>
 									<ul className="my-4 space-y-5">
 										<li>
@@ -315,7 +375,7 @@ export function Mint() {
 														type="text/css"
 														dangerouslySetInnerHTML={{
 															__html:
-																"\n\t.st0{fill:#2DE370;}\n\t.st1{fill:#121619;}\n\t.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}\n",
+																"\n\t.st0{fill:#2DE370;}\n\t.st1{fill:#121619;}\n\t.st2{fillRule:evenodd;clipRule:evenodd;fill:#FFFFFF;}\n",
 														}}
 													/>
 													<path

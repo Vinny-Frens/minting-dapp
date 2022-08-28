@@ -256,14 +256,12 @@ export function Mint() {
 						<div className="card">
 							<div
 								className={`${
-									!txSuccess ? "rotate-hide-front" : " "
+									txSuccess ? "rotate-hide-front" : " "
 								} card-side front`}
 							>
 								<img className="relative rounded-lg" src="/vaf.gif" alt="" />
 							</div>
-							<div
-								className={`${!txSuccess ? "rotate" : " "} + card-side back`}
-							>
+							<div className={`${txSuccess ? "rotate" : " "} + card-side back`}>
 								<div className=" p-4 w-full max-w-sm bg-white rounded-lg border-[5px] shadow-md sm:p-6  dark:border-[#fcc] rotate-360 transition-all">
 									<h5 className="text-3xl font-black text-orange-400 uppercase mb-6">
 										Mint Done

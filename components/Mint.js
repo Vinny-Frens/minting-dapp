@@ -20,6 +20,7 @@ export function Mint() {
 	const [isdisconnected, setisdisconnected] = useState(false);
 	const [errorMessage, seterrorMessage] = useState(" ");
 	const [isErorr, setError] = useState(false);
+	const [txstatus, settxstatus] = useState(false);
 	const { data: account } = useAccount();
 
 	const disconnect = useDisconnect({
@@ -65,6 +66,24 @@ export function Mint() {
 		},
 		onError: (error) => {
 			seterrorMessage(error.reason);
+
+			if (error.reason.includes("Address already claimed!")) {
+				seterrorMessage(
+					"Sorry, execution reverted: This address already claimed!"
+				);
+			} else if (error.reason.includes("Invalid proof!")) {
+				seterrorMessage(
+					"It appears the connected wallet is not part of the allow list."
+				);
+			} else if (error.reason.includes("insufficient funds")) {
+				seterrorMessage(
+					"It appears the connected wallet has insufficient funds for the requested transaction."
+				);
+			} else if (error.reason.includes("array")) {
+				seterrorMessage("");
+				setError(false);
+			}
+
 			setError(true);
 		},
 	});
@@ -249,7 +268,7 @@ export function Mint() {
 							)}
 						</div>
 						<div className="mt-4">
-							<h1>Costs {(0.0799 * Quantity).toFixed(4)} ETH + gas</h1>
+							<h1>Costs {(0.07999 * Quantity).toFixed(5)} ETH + gas</h1>
 						</div>
 					</div>
 					<div className="">

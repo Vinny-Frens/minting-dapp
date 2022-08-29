@@ -283,7 +283,7 @@ export function Mint() {
 							<div className={`${txSuccess ? "rotate" : " "} + card-side back`}>
 								<div className=" p-4 w-full max-w-sm bg-white rounded-lg border-[5px] shadow-md sm:p-6  dark:border-[#fcc] rotate-360 transition-all">
 									<h5 className="text-3xl font-black text-orange-400 uppercase mb-6">
-										Mint Done
+										Mint Completed
 									</h5>
 									<p className="text-sm font-normal text-black">
 										You have successfully purchased <strong>X</strong> Vinny &

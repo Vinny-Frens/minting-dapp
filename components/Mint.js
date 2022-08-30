@@ -11,6 +11,7 @@ import contractInterface from "../contract-abi.json";
 const { MerkleTree } = require("merkletreejs");
 const keccak256 = require("keccak256");
 import whiteListAddresses from "./Whitelist";
+import Web3 from "web3";
 
 export function Mint() {
 	const { address, isConnecting, isDisconnected, isConnected } = useAccount();
@@ -21,6 +22,8 @@ export function Mint() {
 	const [errorMessage, seterrorMessage] = useState(" ");
 	const [isErorr, setError] = useState(false);
 	const [txstatus, settxstatus] = useState(false);
+	const [userBalance, setUserbalance] = useState(0);
+	const [success, setSuccess] = useState(false);
 	const { data: account } = useAccount();
 
 	const disconnect = useDisconnect({
@@ -45,10 +48,10 @@ export function Mint() {
 
 	console.log(address);
 	const { data } = useContractRead(config, "cost");
-	const { data: balance } = useContractRead(config, "balanceOf", {
-		args: ["0xb40185164121A79A638A877b22042af58825cE0b"],
-	});
-	console.log(Number(balance));
+	// const { data: balance } = useContractRead(config, "balanceOf", {
+	//   args: ["0xb40185164121A79A638A877b22042af58825cE0b"],
+	// });
+	// console.log(Number(balance));
 
 	const {
 		data: mintData,
@@ -126,6 +129,17 @@ export function Mint() {
 			setMerkel(merkleProof);
 		}
 	}
+
+	useState(() => {
+		if (txSuccess) {
+			setSuccess(true);
+			getBalance();
+			setTimeout(() => {
+				setSuccess(false);
+			}, 2000);
+		}
+	}, [txSuccess]);
+
 	useEffect(() => {
 		write();
 	}, [merkel]);
@@ -136,6 +150,28 @@ export function Mint() {
 
 	async function publicmint() {
 		write();
+	}
+
+	async function getBalance() {
+		if (window.ethereum) {
+			window.web3 = new Web3(window.ethereum);
+			// await window.ethereum.enable();
+			const web3 = window.web3;
+			// creating contract instance
+			const ct = new web3.eth.Contract(
+				contractInterface,
+				"0xbCF2Ad24E02357D0D3b160Fc524bceCe2CB120bf"
+			);
+			let tokensOf = await ct.methods.balanceOf(account.address).call();
+			setUserbalance(tokensOf);
+			console.log("tokkens", tokensOf);
+		} else if (window.web3) {
+			window.web3 = new Web3(window.web3.currentProvider);
+		} else {
+			window.alert(
+				"Non-Ethereum browser detected. You should consider trying MetaMask!"
+			);
+		}
 	}
 
 	return (
@@ -233,7 +269,7 @@ export function Mint() {
 							</div>
 						</div>
 						<div className="">
-							{txSuccess ? (
+							{success ? (
 								<>
 									<button className="bg-orange-400 text-white rounded-lg px-8 py-4 font-bold text-3xl shadow hover:bg-orange-500 transition-all">
 										Tx Successful
@@ -275,20 +311,20 @@ export function Mint() {
 						<div className="card">
 							<div
 								className={`${
-									txSuccess ? "rotate-hide-front" : " "
+									success ? "rotate-hide-front" : " "
 								} card-side front`}
 							>
 								<img className="relative rounded-lg" src="/vaf.gif" alt="" />
 							</div>
-							<div className={`${txSuccess ? "rotate" : " "} + card-side back`}>
+							<div className={`${success ? "rotate" : " "} + card-side back`}>
 								<div className=" p-4 w-full max-w-sm bg-white rounded-lg border-[5px] shadow-md sm:p-6  dark:border-[#fcc] rotate-360 transition-all">
 									<h5 className="text-3xl font-black text-orange-400 uppercase mb-6">
 										Mint Done
 									</h5>
 									<p className="text-sm font-normal text-black">
-										You have successfully purchased <strong>X</strong> Vinny &
-										Frens NFTs. View your NFT on one of the following
-										marketplaces
+										You have successfully purchased{" "}
+										<strong>{userBalance}</strong> Vinny & Frens NFTs. View your
+										NFT on one of the following marketplaces
 									</p>
 									<ul className="my-4 space-y-5">
 										<li>

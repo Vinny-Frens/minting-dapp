@@ -24,7 +24,7 @@ export function Mint() {
 	const [isErorr, setError] = useState(false);
 	const [txstatus, settxstatus] = useState(false);
 	const [userBalance, setUserbalance] = useState(0);
-	const [success, setSuccess] = useState(true);
+	const [success, setSuccess] = useState(false);
 	const { data: account } = useAccount();
 
 	const disconnect = useDisconnect({

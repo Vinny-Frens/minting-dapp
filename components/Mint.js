@@ -491,10 +491,10 @@ export function Mint() {
 														fill="#feda03"
 													/>
 													<path
-														clip-rule="evenodd"
+														clipRule="evenodd"
 														d="m36.1418 20.0308c0 2.2953-1.341 3.437-2.8481 3.8336 1.8038.5407 3.1092 2.0189 3.1092 4.3622v4.3022h-6.883v-4.0859c0-1.2498-.7358-1.7545-1.9937-1.7545h-8.1647v5.8404h-6.883v-17.2087h16.3531c4.106 0 7.3102.8892 7.3102 4.7107zm-16.7772.0972h9.305v.0008c.0139-.0005.0279-.0008.0419-.0008.6398 0 1.1585.5252 1.1585 1.1732 0 .6479-.5187 1.1731-1.1585 1.1731-.014 0-.028-.0002-.0419-.0007v.0007h-9.305z"
 														fill="#000"
-														fill-rule="evenodd"
+														fillRule="evenodd"
 													/>
 												</svg>
 
@@ -525,8 +525,8 @@ export function Mint() {
 														fill="url(#paint1_linear_3_635)"
 													/>
 													<path
-														fill-rule="evenodd"
-														clip-rule="evenodd"
+														fillRule="evenodd"
+														clipRule="evenodd"
 														d="M409.6 256C409.6 340.831 340.831 409.6 256 409.6C171.169 409.6 102.4 340.831 102.4 256C102.4 171.169 171.169 102.4 256 102.4C340.831 102.4 409.6 171.169 409.6 256ZM358.4 256C358.4 312.554 312.554 358.4 256 358.4C199.446 358.4 153.6 312.554 153.6 256C153.6 199.446 199.446 153.6 256 153.6C312.554 153.6 358.4 199.446 358.4 256Z"
 														fill="url(#paint2_linear_3_635)"
 													/>
@@ -539,8 +539,8 @@ export function Mint() {
 															y2="247.172"
 															gradientUnits="userSpaceOnUse"
 														>
-															<stop stop-color="#00E0FF" />
-															<stop offset="1" stop-color="#562EC8" />
+															<stop stopColor="#00E0FF" />
+															<stop offset="1" stopColor="#562EC8" />
 														</linearGradient>
 														<linearGradient
 															id="paint1_linear_3_635"
@@ -550,8 +550,8 @@ export function Mint() {
 															y2="247.172"
 															gradientUnits="userSpaceOnUse"
 														>
-															<stop stop-color="#00E0FF" />
-															<stop offset="1" stop-color="#562EC8" />
+															<stop stopColor="#00E0FF" />
+															<stop offset="1" stopColor="#562EC8" />
 														</linearGradient>
 														<linearGradient
 															id="paint2_linear_3_635"
@@ -561,8 +561,8 @@ export function Mint() {
 															y2="247.172"
 															gradientUnits="userSpaceOnUse"
 														>
-															<stop stop-color="#00E0FF" />
-															<stop offset="1" stop-color="#562EC8" />
+															<stop stopColor="#00E0FF" />
+															<stop offset="1" stopColor="#562EC8" />
 														</linearGradient>
 													</defs>
 												</svg>

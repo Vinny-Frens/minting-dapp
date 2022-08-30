@@ -243,12 +243,7 @@ export function Mint() {
 							GM FRENS
 						</div>
 						<div>
-							Vinny &amp; Frens is a groundbreaking new NFT project brought to
-							you by Degen Productions with artwork by Stacys. We are
-							reimagining how creative works in the public domain can be adapted
-							in new and novel ways. While we’re initially starting off with NFT
-							collectibles, we have future plans that aim to redefine the
-							contours of Web3.
+							Glad to have you here fren. The process is optimized for your minting pleasure. We utilize the latest and greatest wallet interface to allow for a wide variety of Wallet types. Once connected confirm your balance appears in the bar at the top and proceed to minting. Using an optimized ERC721A feel free to mint from any from 1 to 42 NFTs with ease. The wallet maximum is 70 NFTs. Welcome fren. 
 						</div>
 						<br />
 						<div className="py-4">

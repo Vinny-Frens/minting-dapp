@@ -243,7 +243,7 @@ export function Mint() {
 							GM FRENS
 						</div>
 						<div>
-							Glad to have you here fren. The process is optimized for your minting pleasure. We utilize the latest and greatest wallet interface to allow for a wide variety of Wallet types. Once connected confirm your balance appears in the bar at the top and proceed to minting. Using an optimized ERC721A feel free to mint from 1 to 42 NFTs with equal ease. The wallet maximum is 70 NFTs. Welcome fren. 
+							Glad to have you here fren. The entire process is optimized for your minting pleasure. We utilize the latest and greatest wallet interface to allow for a wide variety of wallet types. Once connected confirm your correct balance appears in the bar at the top and proceed to minting. Using an optimized ERC721A feel free to mint from 1 to 42 NFTs with equal ease. The wallet maximum is 70 NFTs. Welcome fren. 
 						</div>
 						<br />
 						<div className="py-4">

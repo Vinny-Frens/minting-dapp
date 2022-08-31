@@ -240,7 +240,7 @@ export function Mint() {
 				<div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2">
 					<div className="my-auto mx-4 bg-white rounded-xl text-black border-[5px] border-[#fcc] p-7 ">
 						<div className="text-3xl font-black text-orange-400 uppercase mb-6">
-							GM FRENS
+							MINT A FREN
 						</div>
 						<div>
 							Glad to have you here fren. The entire process is optimized for your minting pleasure. We utilize the latest and greatest wallet interface to allow for a wide variety of wallet types. Once connected confirm your correct balance appears in the bar at the top and proceed to minting. Using an optimized ERC721A feel free to mint from 1 to 42 NFTs with equal ease. The wallet maximum is 70 NFTs. Welcome fren to Metaverse City. 

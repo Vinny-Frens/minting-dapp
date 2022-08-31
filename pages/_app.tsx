@@ -14,9 +14,9 @@ import { chain, createClient, WagmiProvider } from "wagmi";
 
 const { chains, provider, webSocketProvider } = configureChains(
 	[
-		chain.rinkeby,
-		...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
-			? [chain.rinkeby]
+		chain.mainnet,
+		...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "false"
+			? [chain.mainnet]
 			: []),
 	],
 	[
@@ -26,12 +26,12 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { wallets } = getDefaultWallets({
-	appName: "RainbowKit Mint NFT Demo",
+	appName: "Vini & Frens",
 	chains,
 });
 
 const demoAppInfo = {
-	appName: "RainbowKit Mint NFT Demo",
+	appName: "Vini & Frens",
 };
 
 const connectors = connectorsForWallets([

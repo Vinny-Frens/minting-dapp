@@ -43,7 +43,7 @@ export function Mint() {
 	}, [account, accountReady]);
 
 	const config = {
-		addressOrName: "0xbCF2Ad24E02357D0D3b160Fc524bceCe2CB120bf",
+		addressOrName: "0x728124c5a816Cd26c20F38fC86202410e63f3b07",
 		contractInterface: contractInterface,
 	};
 
@@ -347,7 +347,7 @@ export function Mint() {
 									<ul className="my-4 space-y-5">
 										<li>
 											<a
-												href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}
+												href={`https://etherscan.io/tx/${mintData?.hash}`}
 												target="_blank"
 												rel="noreferrer"
 												className="flex items-center p-3 text-base font-bold text-gray-900 bg-orange-400 rounded-lg hover:bg-orange-500  group  dark:bg-orange-400 shadow dark:hover:bg-orange-500 transition-all dark:text-white"
@@ -427,7 +427,7 @@ export function Mint() {
 										</li>
 										<li>
 											<a
-												href="https://rinkeby.looksrare.org/accounts/me#activity"
+												href="https://looksrare.org/collections/0x728124c5a816Cd26c20F38fC86202410e63f3b07"
 												className="flex items-center p-3 text-base font-bold text-gray-900 bg-orange-400 rounded-lg hover:bg-orange-500  group  dark:bg-orange-400 shadow dark:hover:bg-orange-500 transition-all dark:text-white"
 											>
 												<svg
@@ -475,7 +475,7 @@ export function Mint() {
 										</li>
 										<li>
 											<a
-												href="https://testnet.rarible.com/items/activity"
+												href="https://rarible.com/collection/0x728124c5a816cd26c20f38fc86202410e63f3b07"
 												className="flex items-center p-3 text-base font-bold text-gray-900 bg-orange-400 rounded-lg hover:bg-orange-500  group  dark:bg-orange-400 shadow dark:hover:bg-orange-500 transition-all dark:text-white"
 											>
 												<svg
@@ -505,7 +505,7 @@ export function Mint() {
 										</li>
 										<li>
 											<a
-												href={`https://x2y2.io/user/activities`}
+												href="https://x2y2.io/collection/0x728124c5a816Cd26c20F38fC86202410e63f3b07/items"
 												className="flex items-center p-3 text-base font-bold text-gray-900 bg-orange-400 rounded-lg hover:bg-orange-500  group  dark:bg-orange-400 shadow dark:hover:bg-orange-500 transition-all dark:text-white"
 											>
 												<svg

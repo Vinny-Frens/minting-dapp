@@ -154,7 +154,7 @@ export function Mint() {
 			getBalance();
 			setTimeout(() => {
 				setSuccess(false);
-			}, 2000);
+			}, 10000);
 		}
 	}, [txSuccess]);
 

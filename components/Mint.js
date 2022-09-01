@@ -243,7 +243,13 @@ export function Mint() {
 							GM FRENS
 						</div>
 						<div>
-							Glad to have you here fren. The entire process is optimized for your minting pleasure. We utilize the latest and greatest wallet interface to allow for a wide variety of wallet types. Once connected confirm your correct balance appears in the bar at the top and proceed to minting. Using an optimized ERC721A feel free to mint from 1 to 42 NFTs with equal ease. The wallet maximum is 70 NFTs. Welcome fren to Metaverse City. 
+							Glad to have you here fren. The entire process is optimized for
+							your minting pleasure. We utilize the latest and greatest wallet
+							interface to allow for a wide variety of wallet types. Once
+							connected confirm your correct balance appears in the bar at the
+							top and proceed to minting. Using an optimized ERC721A feel free
+							to mint from 1 to 42 NFTs with equal ease. The wallet maximum is
+							70 NFTs. Welcome fren to Metaverse City.
 						</div>
 						<br />
 						<div className="py-4">
@@ -294,7 +300,7 @@ export function Mint() {
 										<>
 											<button className="bg-orange-400 text-white rounded-lg px-8 py-4 font-bold text-3xl shadow hover:bg-orange-500 transition-all">
 												<a
-													href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}
+													href={`https://etherscan.io/tx/${mintData?.hash}`}
 													target="_blank"
 													rel="noreferrer"
 												>
@@ -385,7 +391,7 @@ export function Mint() {
 										<li>
 											<a
 												// href={`https://testnets.opensea.io/collection/${config.addressOrName}`}
-												href="https://testnets.opensea.io/account?search[resultModel]=ASSETS&search[sortBy]=CREATED_DATE&search[sortAscending]=false"
+												href="https://opensea.io/collection/vinny-and-frens"
 												target="_blank"
 												rel="noreferrer"
 												className="flex items-center p-3 text-base font-bold text-gray-900 bg-orange-400 rounded-lg hover:bg-orange-500  group  dark:bg-orange-400 shadow dark:hover:bg-orange-500 transition-all dark:text-white"

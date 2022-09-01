@@ -26,12 +26,12 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { wallets } = getDefaultWallets({
-	appName: "Vini & Frens",
+	appName: "Vinny & Frens",
 	chains,
 });
 
 const demoAppInfo = {
-	appName: "Vini & Frens",
+	appName: "Vinny & Frens",
 };
 
 const connectors = connectorsForWallets([

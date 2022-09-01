@@ -6,7 +6,7 @@ export default function Nav() {
 		<nav className="fixed top-0 w-screen bg-orange-400 z-30 border-b-[6px] border-[#d73] pt-2 pb-1 px-4 lg:px-0">
 			<div className="flex flex-wrap justify-between items-center max-w-6xl w-full mx-auto">
 				<div className="flex justify-center items-center text-white font-black text-3xl">
-					<a href="">
+					<a href="https://www.vinnyandfrens.xyz/">
 						<img
 							className="lg:hidden h-[40px]"
 							src="/logoMobile.png"

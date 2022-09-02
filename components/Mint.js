@@ -248,8 +248,7 @@ export function Mint() {
 							interface to allow for a wide variety of wallet types. Once
 							connected confirm your correct balance appears in the bar at the
 							top and proceed to minting. Using an optimized ERC721A feel free
-							to mint from 1 to 42 NFTs with equal ease. The wallet maximum is
-							70 NFTs. Welcome fren to Metaverse City.
+							to mint from 1 to 42 NFTs with equal ease. Keep in mind only one transaction per Allow List address permitted. Welcome fren to Metaverse City.
 						</div>
 						<br />
 						<div className="py-4">

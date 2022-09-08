@@ -52,53 +52,14 @@ export function Mint() {
 
 	// presale mint method goes here. comment when enabling the public sale
 
-	const {
-		data: mintData,
-		write,
-		isSuccess,
-		isLoading,
-		isError,
-	} = useContractWrite(config, "whitelistMint", {
-		args: [Quantity, merkel],
-		overrides: {
-			value: (Quantity * data)?.toString(),
-		},
-		onSuccess: () => {
-			console.log("minting done");
-		},
-		onError: (error) => {
-			seterrorMessage(error.reason);
-
-			if (error.reason.includes("Address already claimed!")) {
-				seterrorMessage(
-					"Sorry, execution reverted: This address already claimed!"
-				);
-			} else if (error.reason.includes("Invalid proof!")) {
-				seterrorMessage(
-					"It appears the connected wallet is not part of the allow list."
-				);
-			} else if (error.reason.includes("insufficient funds")) {
-				seterrorMessage(
-					"It appears the connected wallet has insufficient funds for the requested transaction."
-				);
-			} else if (error.reason.includes("array")) {
-				seterrorMessage("");
-				setError(false);
-			}
-
-			setError(true);
-		},
-	});
-
-	// public mint method commented out. uncomment to enable public mint.
-
 	// const {
 	// 	data: mintData,
 	// 	write,
 	// 	isSuccess,
 	// 	isLoading,
-	// } = useContractWrite(config, "mint", {
-	// 	args: [Quantity],
+	// 	isError,
+	// } = useContractWrite(config, "whitelistMint", {
+	// 	args: [Quantity, merkel],
 	// 	overrides: {
 	// 		value: (Quantity * data)?.toString(),
 	// 	},
@@ -128,6 +89,45 @@ export function Mint() {
 	// 		setError(true);
 	// 	},
 	// });
+
+	// public mint method commented out. uncomment to enable public mint.
+
+	const {
+		data: mintData,
+		write,
+		isSuccess,
+		isLoading,
+	} = useContractWrite(config, "mint", {
+		args: [Quantity],
+		overrides: {
+			value: (Quantity * data)?.toString(),
+		},
+		onSuccess: () => {
+			console.log("minting done");
+		},
+		onError: (error) => {
+			seterrorMessage(error.reason);
+
+			if (error.reason.includes("Address already claimed!")) {
+				seterrorMessage(
+					"Sorry, execution reverted: This address already claimed!"
+				);
+			} else if (error.reason.includes("Invalid proof!")) {
+				seterrorMessage(
+					"It appears the connected wallet is not part of the allow list."
+				);
+			} else if (error.reason.includes("insufficient funds")) {
+				seterrorMessage(
+					"It appears the connected wallet has insufficient funds for the requested transaction."
+				);
+			} else if (error.reason.includes("array")) {
+				seterrorMessage("");
+				setError(false);
+			}
+
+			setError(true);
+		},
+	});
 
 	const { isLoading: txLoading, isSuccess: txSuccess } = useWaitForTransaction({
 		hash: mintData?.hash,
@@ -247,8 +247,10 @@ export function Mint() {
 							your minting pleasure. We utilize the latest and greatest wallet
 							interface to allow for a wide variety of wallet types. Once
 							connected confirm your correct balance appears in the bar at the
-							top and proceed to minting. Using an ERC721A that provides you with a super low cost minting experience, feel free
-							to mint from 1 to 42 NFTs with equal ease. Keep in mind only one transaction per Allow List address permitted. Welcome fren to Metaverse City.
+							top and proceed to minting. Using an ERC721A that provides you
+							with a super low cost minting experience, feel free to mint from 1
+							to 42 NFTs with equal ease. Keep in mind only one transaction per
+							Allow List address permitted. Welcome fren to Metaverse City.
 						</div>
 						<br />
 						<div className="py-4">
@@ -311,8 +313,8 @@ export function Mint() {
 										<>
 											<button
 												className="bg-orange-400 text-white rounded-lg px-8 py-4 font-bold text-3xl shadow hover:bg-orange-500 transition-all"
-												// onClick={() => publicmint()}
-												onClick={() => mint()}
+												onClick={() => publicmint()}
+												// onClick={() => mint()}
 											>
 												Mint Now
 											</button>

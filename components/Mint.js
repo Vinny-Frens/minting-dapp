@@ -339,12 +339,10 @@ export function Mint() {
 							<div className={`${txSuccess ? "rotate" : " "} + card-side back`}>
 								<div className=" p-4 w-full max-w-sm bg-white rounded-lg border-[5px] shadow-md sm:p-6  dark:border-[#fcc] rotate-360 transition-all">
 									<h5 className="text-3xl font-black text-orange-400 uppercase mb-6">
-										Mint Done
+										MINT COMPLETED
 									</h5>
 									<p className="text-sm font-normal text-black">
-										You have successfully purchased{" "}
-										<strong>{userBalance}</strong> Vinny & Frens NFTs. View your
-										NFT on one of the following marketplaces
+										You have successfully purchased. Welcome to Vinny & Frens
 									</p>
 									<ul className="my-4 space-y-5">
 										<li>

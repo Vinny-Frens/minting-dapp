@@ -21,7 +21,7 @@ export default function Nav() {
 				</div>
 				<div>
 					<p className="text-white hidden sm:block">
-						Get Your Vinny & Frens Now. Allow List Minting Live!
+						Get Your Vinny & Frens NFT Now. Minting is Live!
 					</p>
 				</div>
 				<div className="h-full mt-[5px]">

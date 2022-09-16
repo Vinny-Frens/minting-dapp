@@ -324,7 +324,7 @@ export function Mint() {
 							)}
 						</div>
 						<div className="mt-4">
-							<h1>Costs {(0.07799 * Quantity).toFixed(5)} ETH + gas</h1>
+							<h1>Costs {(0.022 * Quantity).toFixed(5)} ETH + gas</h1>
 						</div>
 					</div>
 					<div className="">

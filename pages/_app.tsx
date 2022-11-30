@@ -20,7 +20,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 			: []),
 	],
 	[
-		apiProvider.alchemy("_rhi9NNsKhcwOPd-elP8-4mYQefQRBhAg"),
+		apiProvider.alchemy("rhi9NNsKhcwOPd-elP8-4mYQefQRBhAg"),
 		apiProvider.fallback(),
 	]
 );
